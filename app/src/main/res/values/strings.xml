@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FeedItBack</string>
+    <string name="hintEmail">Email Id</string>
 </resources>
