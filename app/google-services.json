@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "91052625703",
+    "firebase_url": "https://feeditback-88945.firebaseio.com",
+    "project_id": "feeditback-88945",
+    "storage_bucket": "feeditback-88945.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91052625703:android:9fa021e369dc7de1",
+        "android_client_info": {
+          "package_name": "com.sanprishali.feeditback"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91052625703-9pcns7l79p2iue2dsvfjrei2u3r99ojh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYP47nW8mohSLFvwIPgt11XXXMisrieOk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

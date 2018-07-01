@@ -24,7 +24,7 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="invisible">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:text="@string/loginButtonHint"/>
 
         <TextView
@@ -84,7 +84,7 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="visible">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -94,6 +94,7 @@
             android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hintName"
@@ -108,10 +109,52 @@
             android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:hint="@string/hintEmail"
+                android:backgroundTint="@color/lightYellow"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spinnerDesgination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/default_gap"
+            android:layout_marginLeft="@dimen/default_gap"
+            android:backgroundTint="@color/lightYellow"
+            android:layout_marginTop="@dimen/default_gap"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_gap"
+            app:passwordToggleEnabled="true"
+            android:textColorHint="@color/lightYellow"
+            android:theme="@style/TextLabel">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/hintPassword1"
+                android:backgroundTint="@color/lightYellow"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/default_gap"
+            app:passwordToggleEnabled="true"
+            android:textColorHint="@color/lightYellow"
+            android:theme="@style/TextLabel">
+
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/hintPassword2"
                 android:backgroundTint="@color/lightYellow"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -122,7 +165,7 @@
             android:id="@+id/buttonSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:text="@string/signupButtonHint"/>
         <TextView
             android:id="@+id/loginTextViewHint"
