@@ -29,33 +29,51 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_gap">
+            android:layout_margin="@dimen/default_gap"
+            android:textColorHint="@color/lightYellow"
+            android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email" />
+                android:hint="@string/hintEmail"
+                android:backgroundTint="@color/lightYellow"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_gap"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            android:textColorHint="@color/lightYellow"
+            android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Password" />
+                android:hint="@string/hintPassword"
+                android:backgroundTint="@color/lightYellow"/>
         </android.support.design.widget.TextInputLayout>
 
         <Button
+            android:layout_marginLeft="@dimen/default_gap"
+            android:layout_marginRight="@dimen/default_gap"
+            android:background="@color/lightYellow"
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:text="Click me to go to sign up"/>
+            android:text="@string/loginButtonHint"/>
+
+        <TextView
+            android:id="@+id/signupTextViewHint"
+            android:layout_marginTop="@dimen/gapSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/signupHint"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20dp" />
 
     </LinearLayout>
 
@@ -67,35 +85,53 @@
         android:layout_centerVertical="true"
         android:orientation="vertical"
         android:visibility="invisible">
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_gap">
+            android:layout_margin="@dimen/default_gap"
+            android:textColorHint="@color/lightYellow"
+            android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name" />
+                android:hint="@string/hintName"
+                android:backgroundTint="@color/lightYellow"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_gap">
+            android:layout_margin="@dimen/default_gap"
+            android:textColorHint="@color/lightYellow"
+            android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="Email" />
+                android:inputType="textEmailAddress"
+                android:hint="@string/hintEmail"
+                android:backgroundTint="@color/lightYellow"/>
         </android.support.design.widget.TextInputLayout>
 
         <Button
+            android:layout_marginLeft="@dimen/default_gap"
+            android:layout_marginRight="@dimen/default_gap"
+            android:background="@color/lightYellow"
             android:id="@+id/buttonSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
-            android:text="Click me to go to login up"/>
+            android:text="@string/signupButtonHint"/>
+        <TextView
+            android:id="@+id/loginTextViewHint"
+            android:layout_marginTop="@dimen/gapSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loginHint"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20dp" />
     </LinearLayout>
 
 </RelativeLayout>

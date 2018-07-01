@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">FeedItBack</string>
-    <string name="hintEmail">Email Id</string>
+    <string name="hintEmail">Email</string>
+    <string name="hintPassword">Password</string>
+    <string name="hintName">Name</string>
+    <string name="signupHint">No account yet? Create one</string>
+    <string name="loginHint">Already a member? Login</string>
+    <string name="signupButtonHint">CREATE ACCOUNT</string>
+    <string name="loginButtonHint">LOGIN</string>
 </resources>
