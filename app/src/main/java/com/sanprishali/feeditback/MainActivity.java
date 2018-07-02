@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginActivity(){
-
+        //
     }
 
     public void signupActivity(){
-
+        //
     }
 }
