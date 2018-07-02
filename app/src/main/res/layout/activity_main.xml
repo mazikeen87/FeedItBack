@@ -15,7 +15,7 @@
         android:layout_height="79dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/logobig" />
+        app:srcCompat="@drawable/logomain" />
 
     <LinearLayout
         android:id="@+id/loginLayout"
@@ -24,7 +24,7 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="visible">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -34,6 +34,7 @@
             android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hintEmail"
@@ -49,6 +50,7 @@
             android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -73,7 +75,7 @@
             android:layout_height="wrap_content"
             android:text="@string/signupHint"
             android:layout_gravity="center_horizontal"
-            android:textSize="20dp" />
+            android:textSize="@dimen/textSizeMod" />
 
     </LinearLayout>
 
@@ -84,7 +86,7 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="invisible">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -109,22 +111,36 @@
             android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextEmail1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:hint="@string/hintEmail"
                 android:backgroundTint="@color/lightYellow"/>
         </android.support.design.widget.TextInputLayout>
-
-        <Spinner
-            android:id="@+id/spinnerDesgination"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/default_gap"
-            android:layout_marginLeft="@dimen/default_gap"
-            android:backgroundTint="@color/lightYellow"
-            android:layout_marginTop="@dimen/default_gap"/>
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hintDesignation"
+                android:layout_marginTop="@dimen/default_gap"
+                android:textSize="@dimen/textSizeMod"
+                android:textColor="@color/lightYellow"
+                android:layout_marginLeft="12dip"
+                android:layout_marginRight="@dimen/default_gap"
+                />
+            <Spinner
+                android:id="@+id/spinnerDesgination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/default_gap"
+                android:layout_marginLeft="50dp"
+                android:backgroundTint="@color/lightYellow"
+                android:layout_marginTop="@dimen/default_gap"/>
+        </LinearLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -135,6 +151,7 @@
             android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/editTextPassword1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -151,6 +168,7 @@
             android:theme="@style/TextLabel">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/editTextPassword2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -174,7 +192,7 @@
             android:layout_height="wrap_content"
             android:text="@string/loginHint"
             android:layout_gravity="center_horizontal"
-            android:textSize="20dp" />
+            android:textSize="@dimen/textSizeMod" />
     </LinearLayout>
 
 </RelativeLayout>

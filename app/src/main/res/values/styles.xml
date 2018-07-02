@@ -13,9 +13,9 @@
         <item name="android:textColorHint">@color/lightYellow</item>
         <item name="android:textSize">20sp</item>
         //Label color in True State And Bar Color False And True State
-        <item name="colorAccent">@color/lightYellow</item>
-        <item name="colorControlNormal">@color/lightYellow</item>
-        <item name="colorControlActivated">@color/lightYellow</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorControlActivated">@color/black</item>
     </style>
 
 </resources>

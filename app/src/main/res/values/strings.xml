@@ -9,4 +9,5 @@
     <string name="loginHint">Already a member?<b>Login</b></string>
     <string name="signupButtonHint">CREATE ACCOUNT</string>
     <string name="loginButtonHint">LOGIN</string>
+    <string name="hintDesignation">Designation</string>
 </resources>
