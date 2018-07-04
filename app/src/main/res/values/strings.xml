@@ -10,4 +10,7 @@
     <string name="signupButtonHint">CREATE ACCOUNT</string>
     <string name="loginButtonHint">LOGIN</string>
     <string name="hintDesignation">Designation</string>
+    <string name="title_activity_feedback">Feedback</string>
+    <string name="title_feedback">Feedback</string>
+    <string name="title_profile">Profile</string>
 </resources>

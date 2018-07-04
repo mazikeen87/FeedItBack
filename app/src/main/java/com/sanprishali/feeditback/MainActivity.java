@@ -1,7 +1,10 @@
 package com.sanprishali.feeditback;
-//hi Baishali
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,15 +23,31 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
     Button buttonLogin,buttonSignup;
     LinearLayout loginLayout,signupLayout;
     TextView loginTextViewHint,signupTextViewHint;
-    TextInputEditText editTextemail,editTextpassword,editTextname,editTextemail1,editTextpassword1,editTextpassword2;
+    EditText editTextemail,editTextpassword,editTextname,editTextemail1,editTextpassword1,editTextpassword2;
     Spinner spinnerDesignation;
     String designation1;
+    private DatabaseReference mDatabase;
+    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
+    private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+    private Matcher matcher;
+    DataSnapshot snapshot;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,19 +59,29 @@ public class MainActivity extends AppCompatActivity {
         signupTextViewHint = (TextView)findViewById(R.id.signupTextViewHint);
         loginTextViewHint = (TextView)findViewById(R.id.loginTextViewHint);
         spinnerDesignation = (Spinner)findViewById(R.id.spinnerDesgination);
-        editTextemail = (TextInputEditText)findViewById(R.id.editTextEmail);
-        editTextpassword = (TextInputEditText)findViewById(R.id.editTextPassword);
-        editTextname = (TextInputEditText)findViewById(R.id.editTextName);
-        editTextemail1 = (TextInputEditText)findViewById(R.id.editTextEmail1);
-        editTextpassword1 = (TextInputEditText)findViewById(R.id.editTextPassword1);
-        editTextpassword2 = (TextInputEditText)findViewById(R.id.editTextPassword2);
 
-        String email = editTextemail.getText().toString();
-        String password = editTextpassword.getText().toString();
-        String name = editTextname.getText().toString();
-        String email1 = editTextemail1.getText().toString();
-        String password1 = editTextpassword1.getText().toString();
-        String password2 = editTextpassword2.getText().toString();
+        editTextemail = (EditText)findViewById(R.id.editTextEmail);
+        editTextpassword = (EditText)findViewById(R.id.editTextPassword);
+        editTextname = (EditText)findViewById(R.id.editTextName);
+        editTextemail1 = (EditText)findViewById(R.id.editTextEmail1);
+        editTextpassword1 = (EditText)findViewById(R.id.editTextPassword1);
+        editTextpassword2 = (EditText)findViewById(R.id.editTextPassword2);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("user").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                snapshot = dataSnapshot;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        HashMap<String,String> fake = new HashMap<>();
+        fake.put("Fakeid","FakeData");
+        mDatabase.child("user").child("fake").setValue(fake);
 
         String[] designation = new String[]{
                 "",
@@ -106,11 +136,103 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public boolean validateEmail(String email) {
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public boolean validateDuplicateEmail(String email) {
+        for (DataSnapshot datasnapshot:snapshot.getChildren()) {
+            if(datasnapshot.getKey().toString().equals(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int validateLogin(String email,String password) {
+        int pos = email.indexOf("@");
+        String email_ = email.substring(0,pos);
+        for (DataSnapshot datasnapshot:snapshot.getChildren()) {
+            if(datasnapshot.getKey().toString().equals(email_)){
+                if (datasnapshot.child("password").getValue().toString().equals(password)){
+                    return 1;
+                }else{
+                    return 2;
+                }
+            }
+        }
+        return 0;
+    }
+
     public void loginActivity(){
-        //
+        if(!validateEmail(editTextemail.getText().toString())){
+            Toast.makeText(this, "Invalid Email id", Toast.LENGTH_SHORT).show();
+        }else{
+            if (editTextpassword.getText().toString().length()==0){
+                Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
+            }else{
+                int result = validateLogin(editTextemail.getText().toString(),editTextpassword.getText().toString());
+                switch(result){
+                    case 0:
+                        Toast.makeText(this, "Email id does not exist", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        onSuccesfulValidation();
+                        break;
+                    case 2:
+                        Toast.makeText(this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        }
     }
 
     public void signupActivity(){
-        //
+        if(editTextname.getText().toString().length()==0){
+            Toast.makeText(this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
+        }else{
+            if(!validateEmail(editTextemail1.getText().toString())){
+                Toast.makeText(this, "Invalid Email id", Toast.LENGTH_SHORT).show();
+            }else{
+                if(designation1.length()==0){
+                    Toast.makeText(this, "Choose a designation", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (editTextpassword1.getText().toString().length() == 0 && editTextpassword2.getText().toString().length() == 0) {
+                        Toast.makeText(this, "Passwords cannot be empty", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if(editTextpassword1.getText().toString().equals(editTextpassword2.getText().toString())) {
+                            sendSignupData(editTextname.getText().toString(),editTextemail1.getText().toString(),designation1,editTextpassword1.getText().toString());
+                        }else{
+                            Toast.makeText(this, "Password does not match", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void sendSignupData(String name1,String email1,String designation1,String password1){
+        int pos = email1.indexOf("@");
+        String email_ = email1.substring(0,pos);
+        if(validateDuplicateEmail(email_)){
+            Toast.makeText(this, "Email already exists", Toast.LENGTH_SHORT).show();
+        }else {
+            HashMap<String, String> data = new HashMap<>();
+            data.put("name", name1);
+            data.put("email", email1);
+            data.put("designation", designation1);
+            data.put("password", password1);
+            mDatabase.child("user").child(email_).setValue(data);
+            onSuccesfulValidation();
+        }
+    }
+
+    public void onSuccesfulValidation(){
+        final Intent mainIntent = new Intent(MainActivity.this, Feedback.class);
+        if (!MainActivity.this.isFinishing()) {
+            MainActivity.this.startActivity(mainIntent);
+            MainActivity.this.finish();
+        }
     }
 }

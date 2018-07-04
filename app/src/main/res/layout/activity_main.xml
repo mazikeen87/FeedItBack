@@ -27,13 +27,14 @@
         android:visibility="visible">
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrapperEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_gap"
             android:textColorHint="@color/lightYellow"
             android:theme="@style/TextLabel">
 
-            <android.support.design.widget.TextInputEditText
+            <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrapperPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_gap"
@@ -49,7 +51,7 @@
             android:textColorHint="@color/lightYellow"
             android:theme="@style/TextLabel">
 
-            <android.support.design.widget.TextInputEditText
+            <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,13 +91,14 @@
         android:visibility="invisible">
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrapperName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_gap"
             android:textColorHint="@color/lightYellow"
             android:theme="@style/TextLabel">
 
-            <android.support.design.widget.TextInputEditText
+            <EditText
                 android:id="@+id/editTextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,13 +107,14 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrapperEmail1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_gap"
             android:textColorHint="@color/lightYellow"
             android:theme="@style/TextLabel">
 
-            <android.support.design.widget.TextInputEditText
+            <EditText
                 android:id="@+id/editTextEmail1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,6 +147,7 @@
         </LinearLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrapperPassword1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_gap"
@@ -150,7 +155,7 @@
             android:textColorHint="@color/lightYellow"
             android:theme="@style/TextLabel">
 
-            <android.support.design.widget.TextInputEditText
+            <EditText
                 android:id="@+id/editTextPassword1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -160,6 +165,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrapperPassword2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_gap"
@@ -167,7 +173,7 @@
             android:textColorHint="@color/lightYellow"
             android:theme="@style/TextLabel">
 
-            <android.support.design.widget.TextInputEditText
+            <EditText
                 android:id="@+id/editTextPassword2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
