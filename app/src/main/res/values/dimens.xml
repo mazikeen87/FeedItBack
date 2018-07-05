@@ -2,6 +2,7 @@
 <resources>
     <dimen name="gapSize">30dp</dimen>
     <dimen name="textSizeMod">20dp</dimen>
+    <dimen name="textSizeMod1">25dp</dimen>
     <dimen name="default_gap">8dip</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>

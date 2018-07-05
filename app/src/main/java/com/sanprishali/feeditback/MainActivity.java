@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button buttonLogin,buttonSignup;
     LinearLayout loginLayout,signupLayout;
-    TextView loginTextViewHint,signupTextViewHint;
+    TextView loginTextViewHint,signupTextViewHint,anonymousTextViewHint;
     EditText editTextemail,editTextpassword,editTextname,editTextemail1,editTextpassword1,editTextpassword2;
     Spinner spinnerDesignation;
     String designation1;
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         signupLayout = (LinearLayout)findViewById(R.id.signupLayout);
         signupTextViewHint = (TextView)findViewById(R.id.signupTextViewHint);
         loginTextViewHint = (TextView)findViewById(R.id.loginTextViewHint);
+        anonymousTextViewHint = (TextView)findViewById(R.id.anonymousFeedback);
         spinnerDesignation = (Spinner)findViewById(R.id.spinnerDesgination);
 
         editTextemail = (EditText)findViewById(R.id.editTextEmail);
@@ -119,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loginLayout.setVisibility(View.VISIBLE);
                 signupLayout.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        anonymousTextViewHint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSuccesfulValidation();
             }
         });
         buttonLogin.setOnClickListener(new View.OnClickListener() {

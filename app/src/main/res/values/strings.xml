@@ -5,6 +5,7 @@
     <string name="hintPassword1">New Password</string>
     <string name="hintPassword2">Confirm Password</string>
     <string name="hintName">Name</string>
+    <string name="anonymousHint">Give feedback as Anonymous</string>
     <string name="signupHint">No account yet?<b>Create one</b></string>
     <string name="loginHint">Already a member?<b>Login</b></string>
     <string name="signupButtonHint">CREATE ACCOUNT</string>
@@ -13,4 +14,5 @@
     <string name="title_activity_feedback">Feedback</string>
     <string name="title_feedback">Feedback</string>
     <string name="title_profile">Profile</string>
+    <string name="title_view">View</string>
 </resources>

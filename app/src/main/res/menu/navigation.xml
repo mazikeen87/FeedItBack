@@ -2,13 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:id="@+id/navigation_feedback"
+        android:icon="@drawable/feedback"
         android:title="@string/title_feedback" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:id="@+id/navigation_view"
+        android:icon="@drawable/view"
+        android:title="@string/title_view" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/profile"
         android:title="@string/title_profile" />
 
 </menu>

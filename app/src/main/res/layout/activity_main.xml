@@ -71,6 +71,16 @@
             android:text="@string/loginButtonHint"/>
 
         <TextView
+            android:id="@+id/anonymousFeedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/anonymousHint"
+            android:textSize="@dimen/textSizeMod1"
+            android:layout_marginTop="@dimen/gapSize"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
             android:id="@+id/signupTextViewHint"
             android:layout_marginTop="@dimen/gapSize"
             android:layout_width="wrap_content"
