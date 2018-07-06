@@ -172,10 +172,14 @@ public class Feedback extends AppCompatActivity {
                 data.put("dateTime",timeDate);
                 data.put("comment",Comment);
                 data.put("rating",stringRating);
-                int pos = profileEmail.indexOf("@");
-                String email_ = profileEmail.substring(0,pos);
-                mDatabase.child("feedback").child(email_).setValue(data);
-                Toast.makeText(Feedback.this, Comment+"\t"+stringRating+"\t"+timeDate+"\t"+category, Toast.LENGTH_SHORT).show();
+                if (loginType ==1) {
+                    int pos = profileEmail.indexOf("@");
+                    String email_ = profileEmail.substring(0, pos);
+                    mDatabase.child("feedback").child(email_).setValue(data);
+                    Toast.makeText(Feedback.this, Comment + "\t" + stringRating + "\t" + timeDate + "\t" + category, Toast.LENGTH_SHORT).show();
+                }else if (loginType == 2){
+                    mDatabase.child("feedback").push().setValue(data);
+                }
             }
         });
     }
