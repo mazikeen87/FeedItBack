@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Rating;
 import android.os.Bundle;
 import android.os.Environment;
@@ -39,6 +40,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -78,6 +82,8 @@ public class Feedback extends AppCompatActivity {
     EditText CommentBox;
     String designation,profileName,profileEmail;
     private DatabaseReference mDatabase;
+    StorageReference storageRef;
+    FirebaseStorage storage;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -121,6 +127,8 @@ public class Feedback extends AppCompatActivity {
         profileEmail = bundle.getString("email");
         profileName = bundle.getString("name");
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
         Submit = (Button)findViewById(R.id.submitButton);
         CategoryLayout = (LinearLayout)findViewById(R.id.CategoryLayout);
         FeedbackLayout = (LinearLayout)findViewById(R.id.feedbackLayout);
@@ -222,6 +230,7 @@ public class Feedback extends AppCompatActivity {
     public void viewActivity(){
         feedbackLayout.setVisibility(View.INVISIBLE);
         profileLayout.setVisibility(View.INVISIBLE);
+        Toast.makeText(this, "Still in developing stage", Toast.LENGTH_SHORT).show();
         if (designation.equals("HR")){
             viewLayout.setVisibility(View.VISIBLE);
             //can view every feedback
