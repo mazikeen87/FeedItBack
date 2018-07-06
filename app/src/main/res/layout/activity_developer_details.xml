@@ -15,83 +15,81 @@
         android:textSize="20dp"
         style="@style/TextAppearance.AppCompat.Headline"
         android:textStyle="bold" />
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:orientation="vertical"
         android:id="@+id/first">
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="25dp"
-            android:id="@+id/sandipan"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:src="@drawable/san"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="140dp"
+            android:src="@drawable/san" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/default_gap"
             android:textSize="19dp"
             style="@style/TextAppearance.AppCompat.Large"
-            android:layout_marginLeft="12dp"
+            android:layout_gravity="center"
             android:text="@string/sandipan_details"
             android:textStyle="italic" />
-    </RelativeLayout>
-    <RelativeLayout
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/first"
-        android:id="@+id/second">
-        <ImageView
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:id="@+id/second"
+        android:layout_below="@+id/first">
 
+        <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:id="@+id/priyanshu"
-            android:layout_alignParentLeft="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/priy"
-            />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="140dp"
+            android:src="@drawable/priy" />
 
         <TextView
-            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_gap"
             android:textSize="19dp"
             style="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="italic"
+            android:layout_gravity="center"
             android:text="@string/priyanshu_details"
-            android:layout_marginTop="25dp"/>
-    </RelativeLayout>
-    <RelativeLayout
+            android:textStyle="italic" />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/second"
-        android:id="@+id/third">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:id="@+id/third"
+        android:layout_below="@+id/second">
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:id="@+id/baishali"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="25dp"
-            android:src="@drawable/bais"
-            />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="140dp"
+            android:src="@drawable/bais" />
+
         <TextView
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_gap"
             android:textSize="19dp"
             style="@style/TextAppearance.AppCompat.Large"
-            android:textStyle="italic"
+            android:layout_gravity="center"
             android:text="@string/baishali_details"
-            android:layout_marginTop="25dp"/>
-
-    </RelativeLayout>
+            android:textStyle="italic" />
+    </LinearLayout>
 </RelativeLayout>

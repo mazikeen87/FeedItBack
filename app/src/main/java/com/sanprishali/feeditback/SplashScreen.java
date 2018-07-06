@@ -104,7 +104,7 @@ public class SplashScreen extends AppCompatActivity {
                             SplashScreen.this.finish();
                         }
                     }
-                },  100);
+                },  2000);
             }else{
                 final Intent mainIntent = new Intent(SplashScreen.this, NoInternet.class);
                 if (!SplashScreen.this.isFinishing()) {

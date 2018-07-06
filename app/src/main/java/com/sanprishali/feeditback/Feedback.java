@@ -55,9 +55,6 @@ import java.util.List;
 public class Feedback extends AppCompatActivity {
 
     LinearLayout feedbackLayout,viewLayout,profileLayout;
-    private List<box> feedList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private feedback2 mAdapter;
     String userChoosenTask = null;
     SharedPreferences sp;
     ImageView photo;
@@ -225,38 +222,6 @@ public class Feedback extends AppCompatActivity {
     public void viewActivity(){
         feedbackLayout.setVisibility(View.INVISIBLE);
         profileLayout.setVisibility(View.INVISIBLE);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mAdapter = new feedback(feedList);
-        recyclerView.setHasFixedSize(true);
-        // vertical RecyclerView
-        // keep movie_list_row.xml width to `match_parent`
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        // horizontal RecyclerView
-        // keep movie_list_row.xml width to `wrap_content`
-        // RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(mLayoutManager);
-        // adding inbuilt divider line
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        // adding custom divider line with padding 16dp
-        // recyclerView.addItemDecoration(new MyDividerItemDecoration(this, LinearLayoutManager.HORIZONTAL, 16));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-        // row click listener
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                box box = feedList.get(position);
-                Toast.makeText(getApplicationContext(), box.getname() + " is selected!", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-        prepareFeedbackData();
         if (designation.equals("HR")){
             viewLayout.setVisibility(View.VISIBLE);
             //can view every feedback
@@ -275,15 +240,6 @@ public class Feedback extends AppCompatActivity {
         }else if (loginType == 2){
             Toast.makeText(this, "Feedback cannot be viewed by anonymous", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void prepareFeedbackData() {
-        box box = new box("Aman", "HR", "Food","1 day ago","3.0","Good");
-        feedList.add(box);
-
-        box = new box("Gunjan", "HR", "Security","2 day ago","3.0","Nice");
-        feedList.add(box);
-        mAdapter.notifyDataSetChanged();
     }
 
     public void profileActivity(){
