@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeveloperDetails">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The Team- SanPriShali"
+        android:id="@+id/team"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        style="@style/TextAppearance.AppCompat.Headline"
+        android:textStyle="bold" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/first">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="25dp"
+            android:id="@+id/sandipan"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/san"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textSize="19dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginLeft="12dp"
+            android:text="@string/sandipan_details"
+            android:textStyle="italic" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/first"
+        android:id="@+id/second">
+        <ImageView
+
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/priyanshu"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/priy"
+            />
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="italic"
+            android:text="@string/priyanshu_details"
+            android:layout_marginTop="25dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/second"
+        android:id="@+id/third">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/baishali"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/bais"
+            />
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="italic"
+            android:text="@string/baishali_details"
+            android:layout_marginTop="25dp"/>
+
+    </RelativeLayout>
+</RelativeLayout>
