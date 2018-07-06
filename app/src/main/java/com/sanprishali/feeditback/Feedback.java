@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.media.Rating;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -166,19 +167,30 @@ public class Feedback extends AppCompatActivity {
                 simpleDateFormat = new SimpleDateFormat("dd:MM:yyyy HH:mm:ss");
                 timeDate = simpleDateFormat.format(calendar.getTime());
                 HashMap<String,String> data = new HashMap<>();
-                data.put("name",profileName);
-                data.put("designation",designation);
-                data.put("category",category);
-                data.put("dateTime",timeDate);
-                data.put("comment",Comment);
-                data.put("rating",stringRating);
                 if (loginType ==1) {
+                    data.put("name",profileName);
+                    data.put("designation",designation);
+                    data.put("dateTime",timeDate);
+                    data.put("comment",Comment);
+                    data.put("rating",stringRating);
                     int pos = profileEmail.indexOf("@");
                     String email_ = profileEmail.substring(0, pos);
-                    mDatabase.child("feedback").child(email_).setValue(data);
-                    Toast.makeText(Feedback.this, Comment + "\t" + stringRating + "\t" + timeDate + "\t" + category, Toast.LENGTH_SHORT).show();
+                    mDatabase.child("feedback").child(category).child(email_).push().setValue(data);
+                    Toast.makeText(Feedback.this, "Feedback successfully saved", Toast.LENGTH_SHORT).show();
+                    RatingLayout.setVisibility(View.INVISIBLE);
+                    RateIt.setRating(0.0f);
+                    CommentBox.setText(null);
                 }else if (loginType == 2){
-                    mDatabase.child("feedback").push().setValue(data);
+                    data.put("name","Anonymous");
+                    data.put("designation","Anonymous");
+                    data.put("dateTime",timeDate);
+                    data.put("comment",Comment);
+                    data.put("rating",stringRating);
+                    mDatabase.child("feedback").child(category).push().push().setValue(data);
+                    Toast.makeText(Feedback.this, "Feedback successfully saved", Toast.LENGTH_SHORT).show();
+                    RatingLayout.setVisibility(View.INVISIBLE);
+                    RateIt.setRating(0.0f);
+                    CommentBox.setText(null);
                 }
             }
         });
