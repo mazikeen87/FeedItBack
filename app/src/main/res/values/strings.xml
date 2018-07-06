@@ -19,8 +19,8 @@
     <string name="priyanshu_details"><b>Priyanshu Saxena</b> \n priyanshu.saxena0396@gmail.com \n +91-9140486400</string>
     <string name="baishali_details"><b>Baishali Chakraborty</b> \n baishalichakra96@gmail.com \n +91-8837349480</string>
     <string-array name="array_technology">
-    <item>Android</item>
-    <item>Java</item>
-    <item>Php</item>
+    <item>Feedback 1</item>
+    <item>Feedback 2</item>
+    <item>Feedback 3</item>
     </string-array>
 </resources>
