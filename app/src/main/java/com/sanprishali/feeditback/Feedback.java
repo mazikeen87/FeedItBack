@@ -15,11 +15,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +54,14 @@ public class Feedback extends AppCompatActivity {
     Button buttonEditDetails,buttonSaveEditDetails;
     EditText editTextProfileName,editTextProfileEmail,editTextProfileDesignation;
     int loginType;
+    Button Submit;
+    LinearLayout CategoryLayout,FeedbackLayout,RatingLayout;
+    TextView RateText,Category;
+    RatingBar RateIt;
+    Spinner Spin;
+    float rating;
+    String Comment;
+    EditText CommentBox;
     String designation,profileName,profileEmail;
     private DatabaseReference mDatabase;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -86,6 +99,7 @@ public class Feedback extends AppCompatActivity {
         editTextProfileName = (EditText)findViewById(R.id.editTextProfileName);
         editTextProfileEmail = (EditText)findViewById(R.id.editTextProfileEmail);
         editTextProfileDesignation = (EditText)findViewById(R.id.editTextProfileDesignation);
+        RatingLayout = (LinearLayout)findViewById(R.id.commentLayout);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         loginType = bundle.getInt("loginType");
@@ -93,10 +107,56 @@ public class Feedback extends AppCompatActivity {
         profileEmail = bundle.getString("email");
         profileName = bundle.getString("name");
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        Submit = (Button)findViewById(R.id.submitButton);
+        CategoryLayout = (LinearLayout)findViewById(R.id.CategoryLayout);
+        FeedbackLayout = (LinearLayout)findViewById(R.id.feedbackLayout);
+        Spin = (Spinner) findViewById(R.id.Spin);
+        RateIt = (RatingBar) findViewById(R.id.RateIt);
+        RateText = (TextView) findViewById(R.id.RateText);
+        Category = (TextView)findViewById(R.id.Category);
+        CommentBox = (EditText) findViewById(R.id.editTextFeedback);
+
+        String Comment = CommentBox.getText().toString();
+        String[] category = new String[]{
+                "",
+                "HR",
+                "Manager",
+                "Food",
+                "Admin",
+                "Security",
+                "Others"
+        };
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,R.layout.spinner_layout,category);
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
+        Spin.setAdapter(spinnerArrayAdapter);
+        Spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position!=0){
+                    RatingLayout.setVisibility(View.VISIBLE);
+                    getFeedback();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //
+            }
+        });
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    public void getFeedback(){
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rating = RateIt.getRating();
+                Comment = CommentBox.getText().toString();
+                Toast.makeText(Feedback.this, Comment, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();

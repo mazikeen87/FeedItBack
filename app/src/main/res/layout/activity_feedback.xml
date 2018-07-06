@@ -27,19 +27,101 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:orientation="horizontal"
         android:visibility="visible"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/gapSize"
-            android:layout_marginLeft="@dimen/gapSize"
-            android:text="Feedback" />
+            android:id="@+id/entireFeedbackLayout"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/gapSize">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:orientation="vertical"
+                android:id="@+id/CategoryLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Category"
+                    android:layout_marginTop="20dp"
+                    android:text="Choose the Category"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:layout_marginLeft="12dip"/>
+
+                <Spinner
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    android:layout_below="@id/Category"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/Spin">
+                </Spinner>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@+id/CategoryLayout"
+                android:id="@+id/commentLayout"
+                android:layout_marginTop="20dp"
+                android:visibility="invisible">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rate It Below"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:textStyle="italic"
+                    android:id="@+id/RateText"
+                    android:layout_marginLeft="@dimen/gapSize"
+                    android:textColor="@color/black"/>
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/RateIt"
+                    android:layout_below="@id/RateText"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="60dp" />
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/feedbackbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="@dimen/gapSize"
+                    android:textColorHint="@color/black"
+                    android:theme="@style/TextLabelProfile"
+                    android:layout_marginTop="30dp">
+
+                    <EditText
+                        android:id="@+id/editTextFeedback"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:hint="Give your feedback"
+                        android:backgroundTint="@color/black"/>
+                </android.support.design.widget.TextInputLayout>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:id="@+id/submitButton"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="140dp"
+                    android:backgroundTint="@color/main"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
