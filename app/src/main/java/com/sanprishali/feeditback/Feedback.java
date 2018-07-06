@@ -39,6 +39,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class Feedback extends AppCompatActivity {
@@ -60,6 +63,9 @@ public class Feedback extends AppCompatActivity {
     RatingBar RateIt;
     Spinner Spin;
     float rating;
+    Calendar calendar;
+    SimpleDateFormat simpleDateFormat;
+    String timeDate;
     String Comment,stringRating;
     EditText CommentBox;
     String designation,profileName,profileEmail;
@@ -154,7 +160,10 @@ public class Feedback extends AppCompatActivity {
                 rating = RateIt.getRating();
                 Comment = CommentBox.getText().toString();
                 stringRating = Float.toString(rating);
-                Toast.makeText(Feedback.this, Comment+"\t"+stringRating, Toast.LENGTH_SHORT).show();
+                calendar = Calendar.getInstance();
+                simpleDateFormat = new SimpleDateFormat("dd:MM:yyyy HH:mm:ss");
+                timeDate = simpleDateFormat.format(calendar.getTime());
+                Toast.makeText(Feedback.this, Comment+"\t"+stringRating+"\t"+timeDate, Toast.LENGTH_SHORT).show();
             }
         });
     }
