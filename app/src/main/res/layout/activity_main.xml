@@ -211,4 +211,16 @@
             android:textSize="@dimen/textSizeMod" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/textSizeMod"
+        android:gravity="right"
+        android:text="©About Developers"
+        android:id="@+id/textViewDeveloper"
+        android:layout_marginBottom="@dimen/default_gap"
+        android:layout_marginRight="@dimen/default_gap"/>
+
 </RelativeLayout>

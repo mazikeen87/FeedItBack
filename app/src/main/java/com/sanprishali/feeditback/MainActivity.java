@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private Matcher matcher;
     DataSnapshot snapshot;
     int loginType = 0;
+    TextView aboutDeveloper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,17 +60,25 @@ public class MainActivity extends AppCompatActivity {
         signupLayout = (LinearLayout)findViewById(R.id.signupLayout);
         signupTextViewHint = (TextView)findViewById(R.id.signupTextViewHint);
         loginTextViewHint = (TextView)findViewById(R.id.loginTextViewHint);
-        anonymousTextViewHint = (TextView)findViewById(R.id.anonymousFeedback);
-        spinnerDesignation = (Spinner)findViewById(R.id.spinnerDesgination);
 
+        anonymousTextViewHint = (TextView)findViewById(R.id.anonymousFeedback);
+
+        spinnerDesignation = (Spinner)findViewById(R.id.spinnerDesgination);
+        aboutDeveloper = (TextView)findViewById(R.id.textViewDeveloper);
         editTextemail = (EditText)findViewById(R.id.editTextEmail);
         editTextpassword = (EditText)findViewById(R.id.editTextPassword);
         editTextname = (EditText)findViewById(R.id.editTextName);
         editTextemail1 = (EditText)findViewById(R.id.editTextEmail1);
         editTextpassword1 = (EditText)findViewById(R.id.editTextPassword1);
         editTextpassword2 = (EditText)findViewById(R.id.editTextPassword2);
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        aboutDeveloper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,DeveloperDetails.class);
+                startActivity(intent);
+            }
+        });
         mDatabase.child("user").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

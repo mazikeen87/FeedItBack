@@ -15,7 +15,7 @@
     <string name="title_feedback">Feedback</string>
     <string name="title_profile">Profile</string>
     <string name="title_view">View</string>
-    <string name="sandipan_details">Sandipan Chakraborty \n 1504043 \n ETC</string>
-    <string name="priyanshu_details">Priyanshu Saxena \n 1507046 \n EEE</string>
-    <string name="baishali_details">Baishali Chakraborty \n 1507181 \n EEE</string>
+    <string name="sandipan_details"><b>Sandipan Chakraborty</b> \n sandipanchakraborty144@gmail.com \n +91-9804113215</string>
+    <string name="priyanshu_details"><b>Priyanshu Saxena</b> \n priyanshu.saxena0396@gmail.com \n +91-9140486400</string>
+    <string name="baishali_details"><b>Baishali Chakraborty</b> \n baishalichakra96@gmail.com \n +91-8837349480</string>
 </resources>
