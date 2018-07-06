@@ -65,7 +65,7 @@ public class Feedback extends AppCompatActivity {
     float rating;
     Calendar calendar;
     SimpleDateFormat simpleDateFormat;
-    String timeDate;
+    String timeDate,category;
     String Comment,stringRating;
     EditText CommentBox;
     String designation,profileName,profileEmail;
@@ -123,7 +123,7 @@ public class Feedback extends AppCompatActivity {
         CommentBox = (EditText) findViewById(R.id.editTextFeedback);
 
         String Comment = CommentBox.getText().toString();
-        String[] category = new String[]{
+        final String[] category = new String[]{
                 "",
                 "HR",
                 "Manager",
@@ -141,6 +141,7 @@ public class Feedback extends AppCompatActivity {
                 if (position!=0){
                     RatingLayout.setVisibility(View.VISIBLE);
                     getFeedback();
+
                 }
             }
 
@@ -161,12 +162,13 @@ public class Feedback extends AppCompatActivity {
                 Comment = CommentBox.getText().toString();
                 stringRating = Float.toString(rating);
                 calendar = Calendar.getInstance();
+                category = Spin.getSelectedItem().toString();
                 simpleDateFormat = new SimpleDateFormat("dd:MM:yyyy HH:mm:ss");
                 timeDate = simpleDateFormat.format(calendar.getTime());
                 HashMap<String,String> data = new HashMap<>();
                 data.put("name",profileName);
                 data.put("designation",designation);
-                Toast.makeText(Feedback.this, Comment+"\t"+stringRating+"\t"+timeDate, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Feedback.this, Comment+"\t"+stringRating+"\t"+timeDate+"\t"+category, Toast.LENGTH_SHORT).show();
             }
         });
     }
