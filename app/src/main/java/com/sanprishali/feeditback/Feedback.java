@@ -168,6 +168,13 @@ public class Feedback extends AppCompatActivity {
                 HashMap<String,String> data = new HashMap<>();
                 data.put("name",profileName);
                 data.put("designation",designation);
+                data.put("category",category);
+                data.put("dateTime",timeDate);
+                data.put("comment",Comment);
+                data.put("rating",stringRating);
+                int pos = profileEmail.indexOf("@");
+                String email_ = profileEmail.substring(0,pos);
+                mDatabase.child("feedback").child(email_).setValue(data);
                 Toast.makeText(Feedback.this, Comment+"\t"+stringRating+"\t"+timeDate+"\t"+category, Toast.LENGTH_SHORT).show();
             }
         });
