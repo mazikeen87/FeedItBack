@@ -60,7 +60,7 @@ public class Feedback extends AppCompatActivity {
     RatingBar RateIt;
     Spinner Spin;
     float rating;
-    String Comment;
+    String Comment,stringRating;
     EditText CommentBox;
     String designation,profileName,profileEmail;
     private DatabaseReference mDatabase;
@@ -153,7 +153,8 @@ public class Feedback extends AppCompatActivity {
             public void onClick(View v) {
                 rating = RateIt.getRating();
                 Comment = CommentBox.getText().toString();
-                Toast.makeText(Feedback.this, Comment, Toast.LENGTH_SHORT).show();
+                stringRating = Float.toString(rating);
+                Toast.makeText(Feedback.this, Comment+"\t"+stringRating, Toast.LENGTH_SHORT).show();
             }
         });
     }
