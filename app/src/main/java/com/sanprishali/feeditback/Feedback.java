@@ -163,6 +163,9 @@ public class Feedback extends AppCompatActivity {
                 calendar = Calendar.getInstance();
                 simpleDateFormat = new SimpleDateFormat("dd:MM:yyyy HH:mm:ss");
                 timeDate = simpleDateFormat.format(calendar.getTime());
+                HashMap<String,String> data = new HashMap<>();
+                data.put("name",profileName);
+                data.put("designation",designation);
                 Toast.makeText(Feedback.this, Comment+"\t"+stringRating+"\t"+timeDate, Toast.LENGTH_SHORT).show();
             }
         });
@@ -171,10 +174,10 @@ public class Feedback extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(Feedback.this,MainActivity.class);
-        Toast.makeText(this, "Back", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
         if (!Feedback.this.isFinishing()) {
             Feedback.this.startActivity(intent);
-            //Feedback.this.finish();
+            Feedback.this.finish();
         }
     }
 
