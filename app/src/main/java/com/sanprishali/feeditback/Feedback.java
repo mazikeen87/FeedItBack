@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -230,7 +231,16 @@ public class Feedback extends AppCompatActivity {
     public void viewActivity(){
         feedbackLayout.setVisibility(View.INVISIBLE);
         profileLayout.setVisibility(View.INVISIBLE);
+        ListView listView;
+        TextView textView;
+        String[] listItem;
         Toast.makeText(this, "Still in developing stage", Toast.LENGTH_SHORT).show();
+        listView=(ListView)findViewById(R.id.listView);
+        textView=(TextView)findViewById(R.id.textView);
+        listItem = getResources().getStringArray(R.array.array_technology);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, listItem);
+        listView.setAdapter(adapter);
         if (designation.equals("HR")){
             viewLayout.setVisibility(View.VISIBLE);
             //can view every feedback
