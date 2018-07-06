@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation"/>
 
     <LinearLayout
         android:id="@+id/feedbackLayout"
@@ -69,23 +69,121 @@
         android:id="@+id/profileLayout"
         android:layout_width="395dp"
         android:layout_height="586dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/profileLayoutModified"
             android:layout_marginTop="@dimen/gapSize"
             android:layout_marginLeft="@dimen/gapSize"
-            android:text="Profile" />
+            android:layout_marginRight="@dimen/gapSize">
+            <ImageView
+                android:id="@+id/profilePhoto"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="90dp"
+                android:layout_marginTop="@dimen/gapSize"
+                android:src="@drawable/logo" />
+            <ImageButton
+                android:id="@+id/buttonSelectPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/camera"
+                android:layout_marginTop="@dimen/gapSize"/>
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrapperProfileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="@dimen/gapSize"
+            android:textColorHint="@color/black"
+            android:theme="@style/TextLabelProfile">
+
+            <EditText
+                android:enabled="false"
+                android:id="@+id/editTextProfileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/hintName"
+                android:backgroundTint="@color/black"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrapperProfileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="@dimen/gapSize"
+            android:textColorHint="@color/black"
+            android:theme="@style/TextLabelProfile">
+
+            <EditText
+                android:enabled="false"
+                android:id="@+id/editTextProfileEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/hintEmail"
+                android:backgroundTint="@color/black"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrapperProfileDesignation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="@dimen/gapSize"
+            android:textColorHint="@color/black"
+            android:theme="@style/TextLabelProfile">
+
+            <EditText
+                android:enabled="false"
+                android:id="@+id/editTextProfileDesignation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/hintDesignation"
+                android:backgroundTint="@color/black"/>
+        </android.support.design.widget.TextInputLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/profileLayoutModified2"
+            android:layout_marginTop="@dimen/gapSize"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="@dimen/gapSize">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDIT DETAILS"
+                android:id="@+id/buttonEditDetails"
+                android:backgroundTint="@color/main"/>
+
+            <Button
+                android:enabled="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="SAVE CHANGES"
+                android:visibility="visible"
+                android:id="@+id/buttonSaveEditDetails"
+                android:backgroundTint="@color/main"/>
+        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

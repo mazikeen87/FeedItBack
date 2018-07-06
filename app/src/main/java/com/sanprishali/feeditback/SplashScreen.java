@@ -2,10 +2,12 @@ package com.sanprishali.feeditback;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,12 +25,16 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class SplashScreen extends AppCompatActivity {
     private static final int PERMISSION_CALLBACK_CONSTANT = 100;
     private static final int REQUEST_PERMISSION_SETTING = 101;
     String[] permissionsRequired = new String[]{Manifest.permission.CAMERA,
             Manifest.permission.READ_EXTERNAL_STORAGE};
+    SharedPreferences sp;
+    boolean permissionAccess;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +65,15 @@ public class SplashScreen extends AppCompatActivity {
                 ActivityCompat.requestPermissions(SplashScreen.this,permissionsRequired,PERMISSION_CALLBACK_CONSTANT);
             }
         }else{
+            permissionAccess = true;
             onPermissionActivity();
         }
     }
     protected void onPermissionActivity(){
+        sp = getSharedPreferences("permission",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("permissionKey",permissionAccess);
+        editor.commit();
         internetCheck task = new internetCheck();
         task.execute();
     }
@@ -140,6 +151,7 @@ public class SplashScreen extends AppCompatActivity {
                 });
                 builder.show();
             } else {
+                permissionAccess = false;
                 Toast.makeText(getBaseContext(),"Unable to get Permission",Toast.LENGTH_LONG).show();
             }
         }
@@ -150,7 +162,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_PERMISSION_SETTING) {
             if (ActivityCompat.checkSelfPermission(SplashScreen.this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
-                //Got Permission
+                permissionAccess = true;
                 onPermissionActivity();
             }
         }

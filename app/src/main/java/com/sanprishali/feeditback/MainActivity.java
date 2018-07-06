@@ -41,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
     TextView loginTextViewHint,signupTextViewHint,anonymousTextViewHint;
     EditText editTextemail,editTextpassword,editTextname,editTextemail1,editTextpassword1,editTextpassword2;
     Spinner spinnerDesignation;
-    String designation1;
+    String designation1,name1,email1;
     private DatabaseReference mDatabase;
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
     private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
     private Matcher matcher;
     DataSnapshot snapshot;
+    int loginType = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
         String[] designation = new String[]{
                 "",
                 "HR",
-                "Food",
+                "CEO",
+                "CTO",
+                "Manager",
                 "Employee"
         };
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
@@ -126,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
         anonymousTextViewHint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onSuccesfulValidation();
+                loginType = 2;
+                onSuccessfulValidation();
             }
         });
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -164,6 +168,9 @@ public class MainActivity extends AppCompatActivity {
         for (DataSnapshot datasnapshot:snapshot.getChildren()) {
             if(datasnapshot.getKey().toString().equals(email_)){
                 if (datasnapshot.child("password").getValue().toString().equals(password)){
+                    name1 = datasnapshot.child("name").getValue().toString();
+                    email1 = datasnapshot.child("email").getValue().toString();
+                    designation1 = datasnapshot.child("designation").getValue().toString();
                     return 1;
                 }else{
                     return 2;
@@ -186,7 +193,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(this, "Email id does not exist", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        onSuccesfulValidation();
+                        loginType = 1;
+                        onSuccessfulValidation();
                         break;
                     case 2:
                         Toast.makeText(this, "Wrong Password", Toast.LENGTH_SHORT).show();
@@ -220,24 +228,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void sendSignupData(String name1,String email1,String designation1,String password1){
-        int pos = email1.indexOf("@");
-        String email_ = email1.substring(0,pos);
+    public void sendSignupData(String name,String email,String designation,String password){
+        name1 = name;
+        email1 = email;
+        int pos = email.indexOf("@");
+        String email_ = email.substring(0,pos);
         if(validateDuplicateEmail(email_)){
             Toast.makeText(this, "Email already exists", Toast.LENGTH_SHORT).show();
         }else {
             HashMap<String, String> data = new HashMap<>();
-            data.put("name", name1);
-            data.put("email", email1);
-            data.put("designation", designation1);
-            data.put("password", password1);
+            data.put("name", name);
+            data.put("email", email);
+            data.put("designation", designation);
+            data.put("password", password);
             mDatabase.child("user").child(email_).setValue(data);
-            onSuccesfulValidation();
+            loginType = 1;
+            onSuccessfulValidation();
         }
     }
 
-    public void onSuccesfulValidation(){
+    public void onSuccessfulValidation(){
         final Intent mainIntent = new Intent(MainActivity.this, Feedback.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("loginType",loginType);
+        bundle.putString("designation",designation1);
+        bundle.putString("name",name1);
+        bundle.putString("email",email1);
+        mainIntent.putExtras(bundle);
         if (!MainActivity.this.isFinishing()) {
             MainActivity.this.startActivity(mainIntent);
             MainActivity.this.finish();
